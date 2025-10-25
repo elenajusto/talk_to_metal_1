@@ -46,3 +46,5 @@ Things that gcc tries to link:
     - Requires system calls to be implemented (e.g. _exit, _write, _fork)
     - To bypass this error we use `--specs=nosys.specs`
         - So: `arm-none-eabi-gcc --specs=nosys.specs main.o -o main.elf`
+
+Inspecting
