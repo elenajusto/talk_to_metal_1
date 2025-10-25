@@ -47,3 +47,22 @@ arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -std=c11 -g -O0 -c main.c -o main.o
 arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -std=c11 -g -O0 -c startup.c -o startup.o
 arm-none-eabi-gcc -nolibc -nostartfiles -T linker_script.ld main.o startup.o -o main.elf
 ```
+
+# Some Theory
+- CPU's start executing at a fixed address
+    - At startup the Program Register (PC) is initialised with the reset vector the pointer to the first instruction the CPU will execute
+    - For ARM the PC register is the 2nd value of the Interrupt Vecotr Table 
+
+![vector table](images/vector_table_st.png "Interrupt Vector Table from ST's reference manual")
+
+![vecotor table](images/vector_table_arm.png "Interrupt Vector Table from ST's programmer reference manual")
+
+# Purpose of Startup
+1. Hardware init (Load Program Counter and Stack Pointer)
+2. System init
+3. C runtime init (CRT0)
+    - Init data variables
+    - Clear bss variables
+4. __libc_init_array
+5. main()
+6. while(1);
