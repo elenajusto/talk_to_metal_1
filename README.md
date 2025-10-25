@@ -1,0 +1,49 @@
+# Talk to Metal 1
+Trying to talk to metal. In this repository I followed along some resources (mainly this video: https://youtu.be/MhOba73z-dQ?si=HusY9U2iEcaexpgS) to try learn what happens before `int main()` in microcontrollers.
+
+Here I write a linker script and startup code for the `STM32G071RB` and test it on my Nucleo board.
+
+# Installation
+Make sure to get the following VS Code extension: https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug
+
+Make sure to get the following stuff:
+
+```sh
+sudo apt install gcc-arm-none-eabi
+sudo apt install openocd gdb-multiarch
+```
+
+# Setting Up VS Code
+Make sure to set up your `launch.json` and `settings.json` as per below:
+
+
+# Commands
+I should probably make a `Makefile` to handle these things, but so far, below are the main commands you need to use.
+
+Utilities for inspecting size and disassembly:
+```sh
+arm-none-eabi-size main.elf
+arm-none-eabi-objdump -D main.elf | less
+```
+
+Compile minimal C program:
+```sh
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -std=c11 -g -O0 -c main.c -o main.o
+```
+
+Link with default behaviour of toolchain including default standard C library, startfiles and linker script. Insert empty stubs (nosys.specs) for Newlib's system calls:
+```sh
+arm-none-eabi-gcc --specs=nosys.specs main.o -o main.elf
+```
+
+Link without the default libc, startfiles, and linker script:
+```sh
+arm-none-eabi-gcc -nolibc -nostartfiles -T empty.ld -Wl,--verbose main.o -o main.elf
+```
+
+Compile a custom startup file and link with custom linker script:
+```sh
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -std=c11 -g -O0 -c main.c -o main.o
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -std=c11 -g -O0 -c startup.c -o startup.o
+arm-none-eabi-gcc -nolibc -nostartfiles -T linker_script.ld main.o startup.o -o main.elf
+```
