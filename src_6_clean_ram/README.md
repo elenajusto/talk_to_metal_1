@@ -13,6 +13,6 @@ arm-none-eabi-gcc -nolibc -nostartfiles -T bare.ld main.o startup.o -o main.elf
 
 See the below video our proper baremetal working startup file!
 
-<video controls src="../images/working_startup.mp4" Working Startup 1="Working Startup 1"></video>
+[![Working startup code](https://img.youtube.com/vi/yWmH5RQ2tMQ/0.jpg)](https://www.youtube.com/watch?v=yWmH5RQ2tMQ)
 
 It works :D
