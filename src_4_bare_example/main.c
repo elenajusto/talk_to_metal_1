@@ -1,5 +1,5 @@
 int global_variable = 10;         // Should start off as 10
-int uninitialised_global_variable  // Should start off as zero
+int uninitialised_global_variable;  // Should start off as zero
 
 int main(void) { 
     int local_variable = 20;                        // Should be 20 
@@ -14,9 +14,14 @@ int main(void) {
             local_variable + static_local_variable +
             uninitialised_static_local_variable;
     
-    if sum(==60){
+    if (sum==60) {
+
+        // If everything is working fine then we should loop here
         while(1) {}
+
     } else {
+
+        // We should not reach this condition
         return 0;
     }
 }
