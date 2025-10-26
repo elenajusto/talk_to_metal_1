@@ -7,10 +7,12 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceFolder}",
-            "executable": "${workspaceFolder}/main.elf",
+            "executable": "${workspaceFolder}/src_3_bare_minimal_dev/main.elf",
             "request": "launch",
             "type": "cortex-debug",
-            "runToEntryPoint": "isr_reset",
+            // sto pat first CPU instruction
+            "breakAfterReset": true,
+            "device": "stm32g0",
             "servertype": "openocd",
             "gdbPath": "gdb-multiarch",
             "configFiles": [
@@ -18,7 +20,7 @@
                 "target/stm32g0x.cfg"
             ],
             "preLaunchCommands": [
-                "monitor program ${workspaceFolder}/main.elf verify reset"
+                "monitor program ${workspaceFolder}/src_3_bare_minimal_dev/main.elf verify reset"
             ],
             "internalConsoleOptions": "neverOpen",
         }
