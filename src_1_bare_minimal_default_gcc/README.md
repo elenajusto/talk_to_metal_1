@@ -1,4 +1,4 @@
-# 1 Bare Minimal
+# 1 Bare Minimal Default
 
 Compilation command:
 ```sh
