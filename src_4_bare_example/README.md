@@ -48,9 +48,10 @@ Disassembly of section .bss:
  ```
 We can see the variables, stored in the .data section of memory, is being placed at a flash memory address (`0x80000000`)
 
-On why `sum = 58`
+## On why `sum = 58`
 
-Because the `.bss` section is not flashed, their default value is 1. And when interpreted as signed int it becomes `-1`: `(int)0xFFFFFFFF = -1`.
+Because the `.bss` section is not flashed, their default value is 1. And when interpreted as a `signed int` it becomes `-1`:
+![signed 1](../images/signed_1.png)
 
 So when `sum` is being calculated we get:
 
