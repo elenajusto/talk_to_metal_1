@@ -50,7 +50,7 @@ We can see the variables, stored in the .data section of memory, is being placed
 
 On why `sum = 58`
 
-Because the `.bss` section is not flashed, their default value is 1. This is interpreted as 1 and when interpreted as signed int is `-1`: `(int)0xFFFFFFFF = -1`.
+Because the `.bss` section is not flashed, their default value is 1. And when interpreted as signed int it becomes `-1`: `(int)0xFFFFFFFF = -1`.
 
 So when `sum` is being calculated we get:
 
