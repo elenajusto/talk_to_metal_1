@@ -47,3 +47,15 @@ Disassembly of section .bss:
  8000130:       00000000        andeq   r0, r0, r0
  ```
 We can see the variables, stored in the .data section of memory, is being placed at a flash memory address (`0x80000000`)
+
+On why `sum = 58`
+
+Because the `.bss` section is not flashed, their default value is 1. This is interpreted as 1 and when interpreted as signed int is `-1`: `(int)0xFFFFFFFF = -1`.
+
+So when `sum` is being calculated we get:
+
+`sum = global_variable + uninitialised_global_variable + local_variable + static_local_variable + uninitialised_static_local_variable`
+
+And since the uninitialised sections are by default -1, this expression becomes:
+    
+`sum = 10 + (-1) + 20 + 30 + (-1) = 58`
