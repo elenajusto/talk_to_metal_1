@@ -14,8 +14,35 @@ sudo apt install openocd gdb-multiarch
 ```
 
 # Setting Up VS Code
-Make sure to set up your `launch.json` and `settings.json` as per below:
+Make sure to set up your `launch.json` a as per below:
 
+Configure it to be like this:
+```sh
+"breakAfterReset": true,
+            "device": "stm32g0",
+            "servertype": "openocd",
+            "gdbPath": "gdb-multiarch",
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32g0x.cfg"
+            ],
+```
+
+Where `breakAfterReset` ensures we can debug prior to `main()` function. Whilst the remainder configures the debugger to use `openocd` as the flasher and which type of device to target (in this case we are programming an `STM32G071RB`).
+
+For `executable`, edit based on which `src_x` you are running, for example if we are running `src_4`:
+```sh
+ "executable": "${workspaceFolder}/src_4_bare_example/main.elf",
+ ```
+
+Same with  `preLaunchCommands`:
+```sh
+"preLaunchCommands": [
+                "monitor program ${workspaceFolder}/src_4_bare_example/main.elf verify reset"
+            ],
+```
+
+For both of the above, also make sure you are targetting the correct executable file.
 
 # Commands
 I should probably make a `Makefile` to handle these things, but so far, below are the main commands you need to use.

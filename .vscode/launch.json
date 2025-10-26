@@ -10,7 +10,7 @@
             "executable": "${workspaceFolder}/src_4_bare_example/main.elf",
             "request": "launch",
             "type": "cortex-debug",
-            // sto pat first CPU instruction
+            // stop at first CPU instruction
             "breakAfterReset": true,
             "device": "stm32g0",
             "servertype": "openocd",
