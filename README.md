@@ -42,7 +42,7 @@ Same with  `preLaunchCommands`:
             ],
 ```
 
-For both of the above, also make sure you are targetting the correct executable file.
+For both of the above, also make sure you are targetting the correct executable file, for these projects we stayed consistent by naming our source files `main.c`, object files `main.o` and executables `main.elf`.
 
 # Commands
 I should probably make a `Makefile` to handle these things, but so far, below are the main commands you need to use.
