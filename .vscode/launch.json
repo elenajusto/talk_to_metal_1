@@ -7,7 +7,7 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceFolder}",
-            "executable": "${workspaceFolder}/src_3_bare_minimal_dev/main.elf",
+            "executable": "${workspaceFolder}/src_4_bare_example/main.elf",
             "request": "launch",
             "type": "cortex-debug",
             // sto pat first CPU instruction
@@ -20,7 +20,7 @@
                 "target/stm32g0x.cfg"
             ],
             "preLaunchCommands": [
-                "monitor program ${workspaceFolder}/src_3_bare_minimal_dev/main.elf verify reset"
+                "monitor program ${workspaceFolder}/src_4_bare_example/main.elf verify reset"
             ],
             "internalConsoleOptions": "neverOpen",
         }
