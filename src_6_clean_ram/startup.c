@@ -29,6 +29,11 @@ static void clear_bss(void) {
 
 /* ST calls this reset handler, other people call it ISR reset */
 void reset_handler(void) {
+
+    // POSSIBLE TODO
+    // System initialisation -> configure clock, setting up memory, setting up peripherals 
+    // Link libc runtime start file
+
     /* Prepare RAM prior to calling main */
     copy_data();
     clear_bss();
